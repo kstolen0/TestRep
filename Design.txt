@@ -1,36 +1,204 @@
 
-# Main function 
+NAME:	KRISTIAN
+DATE:	02/2016
+PSUEDO CODE FOR TESTING PROGRAM
+
+
+Functions in program
+	Main				[x]
+	LoadUnitContent		[x]
+	AddUnit				[x]
+	DeleteUnit			[x]
+	ReturnDir			[x]
+	SaveUnits			[x]
+	LoadQuestions		[x]
+	AddContent			[x]
+	DeleteContent		[x]
+	SaveContentList		[x]
+	AddQuestion			[x]
+	ListQuestions		[x]
+	DeleteQuestions		[]
+	TestQuestions		[]
+	SaveContent			[]
+
+
+Main() 
 	Program loads units from units.txt file into units list.
 
-	Enter while loop
+	
+	while true
 
-	Prompt user to select a unit or add/delete unit or quit program.
+		Prompt user to select a unit or add/delete unit or quit program.
 
-	try to convert input to an integer.
-		if it works, try to run LoadUniyContent function passing the selected unit.
-			if that doesn't work notify the user the input was out of range. 
-	else convert input to lowercase 
-		if 'a' run the AddUnit function passing the units list.
-		else if 'd' run the set units list equal to the DeleteUnit function, passing the units list. 
-		else if 'e' exit the program. 
-		else notify user input is invalid. 
+		try to convert input to an integer.
+			if it works, try to run LoadUnitContent function passing the selected unit.
+				if that doesn't work notify the user the input was out of range. 
+		else convert input to lowercase 
+			if 'a' run the AddUnit function passing the units list.
+			else if 'd' run the set units list equal to the DeleteUnit function, passing the units list. 
+			else if 'e' exit the program. 
+			else notify user input is invalid. 
 
 
-# AddUnit(units) function
+LoadUnitContent(unit)
+	try to open unit file 
+		set contentList equal to unit file
+	else
+		notify user unit has no content.
+		create empty contentList file
+
+	while true
+		if contentList is not empty
+			prompt user to select unit content, or add content
+			sort contentList
+			print contentList, with corresponding number
+
+		prompt user to add,delete content or exit
+		
+		get user input
+
+		try to convert input to integer
+			try to run LoadQuestions function passing unit and selected content from contentList
+			else show index out of range error
+		else convert input to lowercase
+			if 'a' set contentList equal to AddContent passing unit and contentList
+			else if 'd' set contentList equal to DeleteContent passing unit and contentList
+			else if 'e' exit from function
+			else print invalid input
+			
+			
+AddUnit(units)
 	try to do the following
 		prompt user to enter unit title
 
 		if unit title not in units, add unit title to units.
 		else exit the function, returning units
 
-		Create directory and file for unit. 
+		Create directory using ReturnDir, passing unit title, and  create file for unit. 
 
 		set units equal to update units file with SaveUnits passing units
 
 	else
 		print error message
-
 	return units
 
+
+DeleteUnit(units)
+	try to do the following
+		prompt the user to enter the unit number they wish to delete. 
+
+		try to convert input to int
+			get unit's absolute path
+			remove unit directory
+			remove unit from units list
+		else 
+			notify user invalid input
+	else 
+		print error message		
+	return SaveUnits function, passing units
+
+
+ReturnDir(dr)
+	Get program directory
+	set relational path equal to 'Units/' plus dr
+	set absolute path equal to program directory plus relational path
+
+	if absolute path exists
+		make directory from absolute path
+	return absolute path
+
+
+SaveUnits(units)	
+	Get units.txt directory
+	update units.txt to units
+	return units
+
+
+LoadQuestions(unit, content)
+	try to open unit file
+		set contentList equal to unit file
+	else
+		notify no questions found
+		create empty contentList
+
+	while true
+		prompt user to select if they want to 
+			test
+			add question
+			list questions
+			delete question
+			exit
+		
+		set input to lowercase
+
+		if 't'
+			run TestQuestions function passing contentList
+		else if 'a'
+			set contentList equal to AddQuestion function, passing unit, contentList and content
+		else if 'l'
+			run ListQuestions function, passing contentList
+		else if 'd'
+			set contentList equal to DeleteQuestion function, passing unit, contentList and content
+		else if 'e'
+			exit function
+		else
+			print invalid input
+
+
+AddContent(unit, contentList)
+	try to do the following
+		prompt user to enter content title
+
+		if content title exists in contentList
+			notify user content exists
+			return SaveContentList function, passing unit and contentList
+		
+		add title to contentList
+		create unit content file
+	else
+		print error
+	return SaveContentList function, passing unit and contentList
+
+
+DeleteContent(unit,contentList)
+	try to do the following
+		prompt user enter the unit content number they wish to delete
+	
+		try to convert input to integer
+			remove content directory
+			delete input from contentList
+		else print invalid input
+	else
+		print error
+
+	return SaveContentList(unit,contentList)
+
+
+SaveContentList(unit,contentList)
+	get absolute path of unit text file
+
+	save contentList to file
+
+	return contentList
+
+
+AddQuestion(unit,contentList,contentName)
+	try to do the following
+		create empty question list
+		get length of contentList
+		prompt user to enter question for question#
+		add question to question list
+		prompt user to enter answer to question
+		add answer to question list
+
+		add question list to contentList
+	else
+		print error
+	return SaveContent passing unit, contentList, contentName
+		
+
+ListQuestions(contentList)
+	loop through contentList
+		print question number and question
 
 
