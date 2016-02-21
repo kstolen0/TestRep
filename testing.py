@@ -19,7 +19,7 @@ def CheckDir(dr):
     if not os.path.exists(absPath):
         os.makedirs(absPath)
 
-#Same function but returns directory 
+#Same function as CheckDir but returns created directory 
 def ReturnDir(dr):
     fDir = os.path.dirname(__file__)
     relPath = "Units/" + dr
@@ -129,20 +129,13 @@ def SaveContent(unit, contentList, contentName):
     f.close()
     return contentList
 
+
 def AddQuestion(unit, contentList, contentName):
     try:
         lstQuestion = []
         qNum = len(contentList) + 1
         lstQuestion.append(input("\nEnter question " + str(qNum) + ": "))
-        lstQuestion.append(input("\nEnter answer: "))
-
-        while True:
-            keyword = input ("Enter key words for the right answer (enter \'e\' to exit): ")
-
-            if keyword == "e":
-                break
-
-            lstQuestion.append(keyword)
+        lstQuestion.append(input("\nEnter answer: "))        
 
         contentList.append(lstQuestion)
     except Exception:
@@ -151,14 +144,14 @@ def AddQuestion(unit, contentList, contentName):
         return SaveContent(unit, contentList, contentName)
 
 def DeleteQuestion():
-   pass
+   print('Deleting needs doing.')
 
 def ListQuestions(contentList):
     for i,q in enumerate(contentList,start=1):
         print(i,".",q[0],"\n")
 
 def TestQuestions(contentList):
-    print('Testing must needs doing.')
+    print('Testing needs doing.')
 
 #Function to load contents of unit
 def LoadUnitContent(unit):
@@ -219,13 +212,13 @@ def LoadQuestions(unit,content):
         uInput = uInput.strip().lower()
 
         if uInput == "t":
-            print("todo")
+            TestQuestions(contentList)
         elif uInput == "a":
             contentList = AddQuestion(unit,contentList,content)
         elif uInput == "l":
             ListQuestions(contentList)
         elif uInput == "d":
-            print("todo")
+            DeleteQuestion()
         elif uInput == "e":
             print("Good luck")
             break

@@ -1,0 +1,36 @@
+
+#Main function 
+	Program loads units from units.txt file into units list.
+
+	Enter while loop
+
+	Prompt user to select a unit or add/delete unit or quit program.
+
+	try to convert input to an integer.
+		if it works, try to run LoadUniyContent function passing the selected unit.
+			if that doesn't work notify the user the input was out of range. 
+	else convert input to lowercase 
+		if 'a' run the AddUnit function passing the units list.
+		else if 'd' run the set units list equal to the DeleteUnit function, passing the units list. 
+		else if 'e' exit the program. 
+		else notify user input is invalid. 
+
+
+#AddUnit(units) function
+	try to do the following
+		prompt user to enter unit title
+
+		if unit title not in units, add unit title to units.
+		else exit the function, returning units
+
+		Create directory and file for unit. 
+
+		set units equal to update units file with SaveUnits passing units
+
+	else
+		print error message
+
+	return units
+
+
+

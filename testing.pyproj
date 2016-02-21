@@ -21,6 +21,7 @@
     <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Design.txt" />
     <Content Include="units.txt" />
     <Content Include="Units\OS\OS.txt" />
     <Content Include="Units\OS\Week 1.txt" />
