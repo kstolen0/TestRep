@@ -17,9 +17,9 @@ Functions in program
 	SaveContentList		[x]
 	AddQuestion			[x]
 	ListQuestions		[x]
-	DeleteQuestions		[]
-	TestQuestions		[]
-	SaveContent			[]
+	DeleteQuestion		[x]
+	TestQuestions		[x]
+	SaveContent			[x]
 
 
 Main() 
@@ -201,4 +201,48 @@ ListQuestions(contentList)
 	loop through contentList
 		print question number and question
 
+
+DeleteQuestion(unit,contentList,contentName)
+	try to do the following
+		prompt user to enter the question number tehy wish to delete
+
+		try to convert input to integer
+			try to remove input from contentList
+			else index out of range
+		else
+			notify user invalid input
+	else print error
+	return SaveContent function passing unit,contentList,contentName
+
+
+TestQuestion(contentList)
+	randomize contentList
+	set totalAns = 0
+	set total = 0
+	begin loop through list
+		print question of item
+		prompt user for answer
+		set usrAns equal to split user answer
+		set cAns equal to split correct answer
+		set ansCount equal to length of cAns
+		add ansCount to totalAns
+		set count equal to 0
+		loop through i in split usrAns
+			loop through a in cAns
+				if i equal to a
+					remove a from usrAns
+					add 1 to count
+					break
+		add count to total
+		print count / ansCount
+	print total / totalAns
+	prompt user to press enter to exit function
+		return 
+
+
+
+SaveContent(unit,contentList,contentName)
+	get absolute path of contentName file
+	save contentList to file
+	return contentList
 
